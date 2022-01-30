@@ -1,0 +1,41 @@
+﻿@model List<Project>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">HI, I'm FATNIS</h1>
+    <h3 class="display-7">Enjoy exploring my porfolio</h3>
+    <p>Check out my <a href="https://github.com/RandomLite">GitHub</a> to more project with the source code!</p>
+</div>
+
+<div class="col-md-9">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+                <div class="product-item">
+                    @{
+                            string encoded =item.Image!=null? Convert.ToBase64String(item.Image):"";
+                            string photo = string.Format("data:image/gif;base64,{0}", encoded);
+                        }
+                    <div class="down-content">
+                        <img class="img-fluid" src=@photo />
+                        <h1><strong>@item.OperationSystem.Name</strong></h1>
+                        <p><strong>Name: </strong> &nbsp;@item.Name</p>
+                        <p><strong>Operation System: </strong>@item.OperationSystem.Name </p>
+                        <p><strong>Platform: </strong>@item.Platform </p>
+                        <p><strong>Year: </strong>@(item.FromYear.ToString("yyyy"))</p>
+                        <p><strong>Experience:</strong> @item.Experience</p>
+                        <p><strong>Language: </strong>@item.Language</p>
+                        <p><strong>Editor: </strong>@item.EditorUsed</p>
+                        <p><strong>Url: </strong><a href=@item.Url>@item.Url</a></p>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

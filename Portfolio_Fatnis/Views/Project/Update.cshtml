@@ -1,0 +1,76 @@
+﻿@model Portfolio_Fatnis.ViewModels.ProjectViewModel
+@*@model Portfolio_Fatnis.Models.Project*@
+
+@{
+    ViewData["Title"] = "Edit";
+    var OperSys = (List<SelectListItem>)ViewBag.OperSys;
+}
+
+<h1>Update</h1>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@Model.Id" />
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="control-label"></label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.OperationSystemId" class="control-label"></label>
+                <select asp-for="@Model.OperationSystemId" class="form-control" asp-items="@OperSys"></select>
+                <span asp-validation-for="@Model.OperationSystemId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Platform" class="control-label"></label>
+                <input asp-for="@Model.Platform" class="form-control" />
+                <span asp-validation-for="@Model.Platform" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Experience" class="control-label"></label>
+                <input asp-for="@Model.Experience" class="form-control" />
+                <span asp-validation-for="@Model.Experience" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Language" class="control-label"></label>
+                <input asp-for="@Model.Language" class="form-control" />
+                <span asp-validation-for="@Model.Language" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.EditorUsed" class="control-label"></label>
+                <input asp-for="@Model.EditorUsed" class="form-control" />
+                <span asp-validation-for="@Model.EditorUsed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Url" class="control-label"></label>
+                <input asp-for="@Model.Url" class="form-control" />
+                <span asp-validation-for="@Model.Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.FromYear" class="control-label"></label>
+                <input asp-for="@Model.FromYear" class="form-control" />
+                <span asp-validation-for="@Model.FromYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Img" class="control-label"></label>
+                <input asp-for="@Model.Img" class="form-control" />
+                <span asp-validation-for="@Model.Img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
